@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "download-data"
+version = "0.1.0"
+description = "Download street data for Venice"
+authors = ["JJ Merelo <jjmerelo@gmail.com>"]
+license = "Affero GPL"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.9"
+osmnx = "^1.9.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
