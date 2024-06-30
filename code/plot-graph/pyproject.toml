@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Plot Venice graph"
 authors = ["JJ Merelo <jjmerelo@gmail.com>"]
 license = "Affero GPL"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
