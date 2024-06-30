@@ -7,7 +7,7 @@ def __main__():
 
     # Download the street network data for Venice
     graph = ox.graph_from_place(place_name, network_type="walk", simplify=True)
-    ox.save_graphml(graph, filepath="../data/venice.graphml")
+    ox.save_graphml(graph, filepath="../data/venice.graphml",gephi=True)
 
     print("Data downloaded successfully!")
     ox.plot(graph)
