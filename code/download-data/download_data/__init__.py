@@ -10,5 +10,5 @@ def __main__():
     ox.save_graphml(graph, filepath="../data/venice.graphml",gephi=True)
 
     print("Data downloaded successfully!")
-    ox.plot(graph)
+    ox.plot_graph(graph)
     
