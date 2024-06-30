@@ -168,3 +168,5 @@ cython_debug/
 #Rstudio
 .Rproj.user
 *.Rproj
+.Rdata
+.Rhistory
