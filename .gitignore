@@ -164,4 +164,7 @@ cython_debug/
 
 # emacs
 *~
+
+#Rstudio
 .Rproj.user
+*.RProj
