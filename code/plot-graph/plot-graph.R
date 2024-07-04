@@ -1,6 +1,6 @@
 library(igraph)
 
-venice.graph <- as.undirected( read_graph("data/venice.graphml",format="graphml") )
+venice.graph <- as.undirected( read_graph("code/data/venice.graphml",format="graphml") )
 
 # graph.betw <- betweenness(venice.graph)
 E(venice.graph)$width <- round(log(edge_betweenness(venice.graph))/2)
