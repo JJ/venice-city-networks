@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+cache/
 *.py[cod]
 *$py.class
 
@@ -164,5 +165,13 @@ cython_debug/
 # emacs
 *~
 
+
 # Python
 cache/
+
+# Rstudio
+.Rproj.user
+*.Rproj
+.RData
+.Rhistory
+
