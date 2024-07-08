@@ -20,7 +20,6 @@ E(venice.graph)$edge.lty <- edge.lty
 
 venice.graph.undirected <- as.undirected(venice.graph)
 
-join.mark <-"\" \""
 for ( edge in E(venice.graph.undirected) ){
   source <- ends(venice.graph.undirected, edge)[1]
   target <- ends(venice.graph.undirected, edge)[2]
@@ -28,13 +27,10 @@ for ( edge in E(venice.graph.undirected) ){
   directed.edge <- get.edge.ids(venice.graph, c(source, target), directed = TRUE)
   E(venice.graph.undirected)[edge]$edge.lty <- E(venice.graph)[directed.edge]$edge.lty
 
-  if ( grepl(join.mark,E(venice.graph.undirected)[edge]$name)){
-    print(E(venice.graph.undirected)[edge]$name)
-    names <- unlist(strsplit(unlist(E(venice.graph.undirected)[edge]$name), join.mark))
-    if ((length(names) == 2) & ( names[1] == names[2] ) ){
-      print("Splitting name")
-      E(venice.graph.undirected)[edge]$name <- names[1]
-    }
+  edge.name <- unlist(E(venice.graph.undirected)[edge]$name)
+  if ( length(edge.name)==2 & edge.name[1] == edge.name[2] ) {
+    print(edge.name)
+    E(venice.graph.undirected)[edge]$name <- edge.name[1]
   }
 }
 
