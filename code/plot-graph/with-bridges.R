@@ -29,7 +29,6 @@ for ( edge in E(venice.graph.undirected) ){
 
   edge.name <- unlist(E(venice.graph.undirected)[edge]$name)
   if ( length(edge.name)==2 & edge.name[1] == edge.name[2] ) {
-    print(edge.name)
     E(venice.graph.undirected)[edge]$name <- edge.name[1]
   }
 }
