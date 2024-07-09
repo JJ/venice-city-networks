@@ -26,6 +26,7 @@ for ( edge in E(venice.graph.undirected) ){
 
   directed.edge <- get.edge.ids(venice.graph, c(source, target), directed = TRUE)
   E(venice.graph.undirected)[edge]$edge.lty <- E(venice.graph)[directed.edge]$edge.lty
+  E(venice.graph.undirected)[edge]$bridge <- E(venice.graph)[directed.edge]$bridge
 
   edge.name <- unlist(E(venice.graph.undirected)[edge]$name)
   if ( length(edge.name)==2 & edge.name[1] == edge.name[2] ) {
