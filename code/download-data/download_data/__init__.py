@@ -11,4 +11,3 @@ def __main__():
 
     print("Data downloaded successfully!")
     ox.plot_graph(graph)
-    
