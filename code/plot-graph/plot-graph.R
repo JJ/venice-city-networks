@@ -37,7 +37,7 @@ for ( edge in E(venice.graph.undirected) ){
 E(venice.graph.undirected)$width <- round(log(edge_betweenness(venice.graph.undirected))/2)
 E(venice.graph.undirected)[ E(venice.graph.undirected)$width == -Inf]$width = 1
 
-plot(venice.graph.undirected,vertex.label=NA,vertex.shape="none",edge.color=E(venice.graph.undirected)$width, edge.lty = E(venice.graph)$edge.lty)
+plot(venice.graph.undirected,vertex.label=NA,vertex.shape="none",edge.color=E(venice.graph.undirected)$width, edge.lty = E(venice.graph.undirected)$edge.lty)
 
 saveRDS(venice.graph.undirected, file="code/data/venice.graph.undirected.rds")
 save(venice.graph.undirected, file="code/data/venice.graph.undirected.Rdata")
