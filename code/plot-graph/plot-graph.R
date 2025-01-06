@@ -5,8 +5,8 @@ library(dplyr)
 venice.graph <- read_graph("code/data/venice.graphml",format="graphml")
 venice.graph.xml <- read_xml("code/data/venice.graphml")
 edge.type <- xml_text(xml_find_all(venice.graph.xml,".//d1:data[@key='d3']"))
-
 E(venice.graph)$type <- edge.type
+bridge <- xml_text(xml_find_all(venice.graph.xml,".//d1:data[@key='d1']"))
 
 edge.lty <- NULL
 
