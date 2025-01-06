@@ -11,8 +11,8 @@ E(venice.graph)$type <- edge.type
 edge.lty <- NULL
 
 for (i in 1:length(edge.type)){
-  if (grepl("steps",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,1)
-  else if ( grepl("pedestrian",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,2)
+  if (grepl("steps",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,2)
+  else if ( grepl("pedestrian",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,1)
   else if ( grepl("footway",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,3)
   else if ( grepl("service",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,4)
   else if ( grepl("unclassified",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,5)
@@ -33,8 +33,7 @@ for ( edge in E(venice.graph.undirected) ){
   E(venice.graph.undirected)[edge]$edge.lty <- E(venice.graph)[directed.edge]$edge.lty
 }
 
-# graph.betw <- betweenness(venice.graph)
-E(venice.graph.undirected)$width <- round(log(edge_betweenness(venice.graph.undirected))/2)
+# E(venice.graph.undirected)$width <- round(log(edge_betweenness(venice.graph.undirected))/2)
 E(venice.graph.undirected)[ E(venice.graph.undirected)$width == -Inf]$width = 1
 
 plot(venice.graph.undirected,vertex.label=NA,vertex.shape="none",edge.color=E(venice.graph.undirected)$width, edge.lty = E(venice.graph.undirected)$edge.lty)
