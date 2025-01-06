@@ -10,7 +10,6 @@ E(venice.graph)$type <- edge.type
 
 edge.lty <- NULL
 
-
 for (i in 1:length(edge.type)){
   if (grepl("steps",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,1)
   else if ( grepl("pedestrian",edge.type[i]) == TRUE ) edge.lty <- c(edge.lty,2)
