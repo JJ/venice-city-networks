@@ -43,6 +43,22 @@ max.lon <- 12.3
 venice <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 15, 'osm')
 basemap <- autoplot( OpenStreetMap::openproj(venice))
 
-basemap <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon[i], aes(x=lon, y=lat), color="red", size=3)
+betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=3)
 
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$closeness),]
+
+top.25.nodes.closeness <- venice.city.nodes.ranked.df[1:25,]
+
+# loop over these rows and use osm_get_objects to retrieve the node information
+top.25.nodes.closeness.latlon.df <- data.frame(node = top.25.nodes.closeness$node,
+                                                 lat = numeric(nrow(top.25.nodes.closeness)),
+                                                 lon = numeric(nrow(top.25.nodes.closeness)))
+for (i in 1:nrow(top.25.nodes.closeness.latlon.df)){
+  node.info <- osm_get_objects("node",top.25.nodes.closeness.latlon.df[i,]$node)
+  top.25.nodes.closeness.latlon.df[i,]$lat <- as.numeric(node.info$lat)
+  top.25.nodes.closeness.latlon.df[i,]$lon <- as.numeric(node.info$lon)
+}
+
+top.25.nodes.closeness.with.latlon <- merge(top.25.nodes.closeness, top.25.nodes.closeness.latlon.df, by="node")
+
+closeness.map <- basemap + geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
