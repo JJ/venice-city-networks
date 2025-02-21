@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIXED
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\pagestyle{empty}
+\setlength{\parskip}{0.25\baselineskip}
+\renewcommand{\title}[1]{{\noindent\large\bfseries#1\medskip\\}}
+\renewcommand{\author}[2]{{\noindent #1 \medskip\\ \small #2 \medskip\\}}
+\usepackage[letterpaper,margin=20mm]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{What news close to the Rialto? The complex nature of the urban fabric in Venice}
+\author{
+% Authors Names
+First Author,\textsuperscript{1}
+Second Author,\textsuperscript{2}
+Third Author,\textsuperscript{3}
+}
+{
+% Authors Affiliations
+1. Address 1\\
+2. Address 2\\
+3. Address 3
+}
+
+% ABSTRACT
+% This is a short summary of the research that should take no more than a page [1].
+
+
+\bigskip
+{\small
+\bibliography{ccs}
+}
+
+% \begin{figure}[b]
+%   \centering
+%   \includegraphics[width=0.5\textwidth]{figure.pdf}
+%   \caption{Figure caption.}
+% \end{figure}
+
+
+\end{document}

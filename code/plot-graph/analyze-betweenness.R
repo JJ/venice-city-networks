@@ -70,6 +70,18 @@ top.25.nodes.closeness.with.latlon <- merge(top.25.nodes.closeness, top.25.nodes
 
 closeness.map <- betweenness.map + geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
 
+min.lat <- 45.436
+max.lat <- 45.439
+
+min.lon <- 12.335
+max.lon <- 12.339
+
+venice.top.closeness <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 18, 'osm')
+top.closeness.basemap <- autoplot( OpenStreetMap::openproj(venice.top.closeness))+ geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
+
+betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=3)
+
+
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$eigen),]
 top.25.nodes.eigen <- venice.city.nodes.ranked.df[1:25,]
 top.25.nodes.eigen.latlon.df <- data.frame(node = top.25.nodes.eigen$node,
