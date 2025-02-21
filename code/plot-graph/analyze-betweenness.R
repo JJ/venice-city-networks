@@ -2,17 +2,22 @@ library(igraph)
 library(osmapiR)
 library(ggmap)
 library(OpenStreetMap)
+library(dupNodes)
 
 venice.graph.undirected <- readRDS("code/data/venice.graph.undirected.rds")
 
 V(venice.graph.undirected)$betweenness <- betweenness(venice.graph.undirected)
 V(venice.graph.undirected)$closeness <- closeness(venice.graph.undirected)
 V(venice.graph.undirected)$eigen <- unname(eigen_centrality(venice.graph.undirected)$vector)
+V(venice.graph.undirected)$name <- V(venice.graph.undirected)$id # Needed for DNSLbetweenness
+V(venice.graph.undirected)$DNSLbetweenness <- DNSLbetweenness_for_graph(venice.graph.undirected)
 
 
 venice.city.nodes.df <- data.frame( node = V(venice.graph.undirected)$id,
                                     betweenness = V(venice.graph.undirected)$betweenness,
-                                    closeness = V(venice.graph.undirected)$closeness)
+                                    closeness = V(venice.graph.undirected)$closeness,
+                                    eigen = V(venice.graph.undirected)$eigen,
+                                    DNSLbetweenness = V(venice.graph.undirected)$DNSLbetweenness)
 
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$betweenness),]
 
@@ -63,7 +68,7 @@ for (i in 1:nrow(top.25.nodes.closeness.latlon.df)){
 
 top.25.nodes.closeness.with.latlon <- merge(top.25.nodes.closeness, top.25.nodes.closeness.latlon.df, by="node")
 
-closeness.map <- basemap + geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
+closeness.map <- betweenness.map + geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
 
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$eigen),]
 top.25.nodes.eigen <- venice.city.nodes.ranked.df[1:25,]
@@ -77,7 +82,20 @@ for (i in 1:nrow(top.25.nodes.eigen.latlon.df)){
 }
 
 top.25.nodes.eigen.with.latlon <- merge(top.25.nodes.eigen, top.25.nodes.eigen.latlon.df, by="node")
-
 eigen.map <- basemap + geom_point(data=top.25.nodes.eigen.with.latlon, aes(x=lon, y=lat), color="green", size=3)
 
 
+venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$DNSLbetweenness),]
+top.25.nodes.DNSLbetweenness <- venice.city.nodes.ranked.df[1:25,]
+top.25.nodes.DNSLbetweenness.latlon.df <- data.frame(node = top.25.nodes.DNSLbetweenness$node,
+                                                     lat = numeric(nrow(top.25.nodes.DNSLbetweenness)),
+                                                     lon = numeric(nrow(top.25.nodes.DNSLbetweenness)))
+for (i in 1:nrow(top.25.nodes.DNSLbetweenness.latlon.df)){
+  node.info <- osm_get_objects("node",top.25.nodes.DNSLbetweenness.latlon.df[i,]$node)
+  top.25.nodes.DNSLbetweenness.latlon.df[i,]$lat <- as.numeric(node.info$lat)
+  top.25.nodes.DNSLbetweenness.latlon.df[i,]$lon <- as.numeric(node.info$lon)
+}
+
+top.25.nodes.DNSLbetweenness.with.latlon <- merge(top.25.nodes.DNSLbetweenness, top.25.nodes.DNSLbetweenness.latlon.df, by="node")
+
+DNSLbetweenness.map <- basemap + geom_point(data=top.25.nodes.DNSLbetweenness.with.latlon, aes(x=lon, y=lat), color="purple", size=3)
