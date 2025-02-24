@@ -13,15 +13,13 @@
 \title{What news close to the Rialto? The complex nature of the urban fabric in Venice}
 \author{
 % Authors Names
-First Author,\textsuperscript{1}
-Second Author,\textsuperscript{2}
-Third Author,\textsuperscript{3}
+Juan J. Merelo,\textsuperscript{1}
+Uri Hershberg,\textsuperscript{2}
 }
 {
 % Authors Affiliations
-1. Address 1\\
-2. Address 2\\
-3. Address 3
+1. Dept. Computer Engineering, Automatics and Robotics, University of Granada, Spain\\
+2. University of Haifa, Israel\\
 }
 
 % ABSTRACT
