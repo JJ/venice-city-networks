@@ -25,10 +25,14 @@ Uri Hershberg,\textsuperscript{2}
 % ABSTRACT
 % This is a short summary of the research that should take no more than a page [1].
 
+The complex network formed by the streets in the city of Venice are a unique example of an adaptive system that can be observed and examined as a solution to the problem of moving goods and services in a city that can be traversed mainly of foot, and where vehicles are confined to specific channels, the {\em rii} and {\em canali}. And this solution has emerged through centuries without a central design, in a true self-organizing way, and in a very unique fashion: while most networks grow by addition of nodes and corresponding edges, Venice has grown mainly through the incorporation of new edges, with new nodes emerging only as the junction between two edges.
+
+Looking at the main nodes in the network is thus interesting for a couple of reasons: first, finding out where they are and if they match the perception we have of the city in a city designed to be perceived in a certain way \cite{psarra_venice_nodate}, and second, if they can be explained by the history of the Republic of Venice and its self-perception.
 
 \bigskip
 {\small
-\bibliography{ccs}
+\bibliographystyle{unsrt}
+\bibliography{VeniceRef}
 }
 
 % \begin{figure}[b]
