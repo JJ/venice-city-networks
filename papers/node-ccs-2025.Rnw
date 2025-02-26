@@ -27,7 +27,9 @@ Uri Hershberg,\textsuperscript{2}
 
 The complex network formed by the streets in the city of Venice are a unique example of an adaptive system that can be observed and examined as a solution to the problem of moving goods and services in a city that can be traversed mainly of foot, and where vehicles are confined to specific channels, the {\em rii} and {\em canali}. And this solution has emerged through centuries without a central design, in a true self-organizing way, and in a very unique fashion: while most networks grow by addition of nodes and corresponding edges, Venice has grown mainly through the incorporation of new edges, with new nodes emerging only as the junction between two edges.
 
-Looking at the main nodes in the network is thus interesting for a couple of reasons: first, finding out where they are and if they match the perception we have of the city in a city designed to be perceived in a certain way \cite{psarra_venice_nodate}, and second, if they can be explained by the history of the Republic of Venice and its self-perception.
+The creation of space within the city of Venice corresponded to a main constraint: the presence in {\em campi} (squares) of water-gathering cisterns that guaranteed the supply of fresh water to a parish, whose titular church was usually in the same space \cite{psarra2014venice}. These {\em campi} were essential in the interaction between neighbors, cutting across class lines. The city was (and is) hierarchically divided in six {\em sestieri}, and these divided in parishes. However, beyond these divisions, there is no specific {\em city center}, other than the fact that {\em Piazza San Marco} acted as political and religious center and Rialto as the commercial one.
+
+This is why looking at the main nodes in the network is thus interesting for a couple of reasons: first, finding out where they are and if they match the perception we have of the city in a city designed to be perceived in a certain way \cite{psarra_venice_nodate}, and second, if they can be explained by the history of the Republic of Venice and its self-perception.
 
 \bigskip
 {\small
