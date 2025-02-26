@@ -180,3 +180,4 @@ cache/
 *.bbl
 *.pdf
 *.gz
+auto/
