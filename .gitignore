@@ -175,3 +175,8 @@ cache/
 .RData
 .Rhistory
 
+# Latex
+*.tex
+*.bbl
+*.pdf
+*.gz
