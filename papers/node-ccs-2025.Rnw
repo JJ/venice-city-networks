@@ -57,6 +57,21 @@ top.25.nodes.betweenness.with.latlon <- merge(top.25.nodes.betweenness, top.25.n
 
 number.of.nodes <- length(V(venice.graph.undirected)$id)
 number.of.edges <- length(E(venice.graph.undirected)$name)
+
+venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$closeness),]
+
+top.25.nodes.closeness <- venice.city.nodes.ranked.df[1:25,]
+# loop over these rows and use osm_get_objects to retrieve the node information
+top.25.nodes.closeness.latlon.df <- data.frame(node = top.25.nodes.closeness$node,
+                                                 lat = numeric(nrow(top.25.nodes.closeness)),
+                                                 lon = numeric(nrow(top.25.nodes.closeness)))
+for (i in 1:nrow(top.25.nodes.closeness.latlon.df)){
+  node.info <- osm_get_objects("node",top.25.nodes.closeness.latlon.df[i,]$node)
+  top.25.nodes.closeness.latlon.df[i,]$lat <- as.numeric(node.info$lat)
+  top.25.nodes.closeness.latlon.df[i,]$lon <- as.numeric(node.info$lon)
+}
+
+top.25.nodes.closeness.with.latlon <- merge(top.25.nodes.closeness, top.25.nodes.closeness.latlon.df, by="node")
 @
 
 % ABSTRACT
@@ -70,17 +85,42 @@ This is why looking at the main nodes in the network is thus interesting for a c
 
 In order to perform this analysis, we have extracted the street network of Venice from OpenStreetMap using the {\sf osmnx} Python library. This creates a graph that has as nodes every junction between two paths, and as nodes foot-traversable segments; we have excluded the waterways in this analysis. This results in a network with \Sexpr{number.of.nodes} nodes and \Sexpr{number.of.edges} edges.
 
+Node-level measurements are, in general, considered the most useful to understand the role different parts of the graph play. Betweenness centrality measures how often a node will appear in the shortest path from one part of the graph to another, and allows us to understand which areas have emerged as the main communication hubs; this is represented in Figure \ref{fig:ccs.node.figure} (left), which shows the top 25 nodes by betweenness. They are spread over two areas: the Riva degli Schiavoni up to the Arsenale, and the area between San Stefano and the Accademia. Closeness centrality, on the other hand, is related to how in the physical middle of the graph is it, or how quickly could you move from that node to any other; they are represented in Figure \ref{fig:ccs.node.figure} (right); these nodes are mainly in the area of Rialto.
+
+It is interesting to look at history and see how these emerged. The two areas with high betweenness had mainly a military importance, and they feature wide berms bordering the lagoon as well as wide squares. The high-closeness area, however, is mainly retail trade, even nowadays. The conclusion is that an analysis of the network may allow us to know the city better, but also how it adapted itself to new requirements along its long and variegated history.
+
+
 \bigskip
 {\small
 \bibliographystyle{unsrt}
 \bibliography{VeniceRef}
 }
 
-% \begin{figure}[b]
-%   \centering
-%   \includegraphics[width=0.5\textwidth]{figure.pdf}
-%   \caption{Figure caption.}
-% \end{figure}
+<<ccs.node.figure, echo=F, message=F, fig.show="hold", out.width="50%", fig.cap="Top 25 nodes by betweenness centrality in Venice, left, by closeness, right.">>=
+min.lat <- 45.42
+max.lat <- 45.45
 
+min.lon <- 12.375
+max.lon <- 12.3
+
+venice <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 15, 'osm')
+basemap <- autoplot( OpenStreetMap::openproj(venice))
+
+betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=3)
+
+betweenness.map
+
+min.lat <- 45.436
+max.lat <- 45.439
+
+min.lon <- 12.335
+max.lon <- 12.339
+
+venice.top.closeness <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 18, 'osm')
+top.closeness.basemap <- autoplot( OpenStreetMap::openproj(venice.top.closeness))+ geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
+
+top.closeness.basemap
+
+@
 
 \end{document}
