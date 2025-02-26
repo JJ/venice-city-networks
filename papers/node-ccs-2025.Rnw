@@ -22,7 +22,7 @@ Uri Hershberg,\textsuperscript{2}
 2. University of Haifa, Israel\\
 }
 
-<<ccs.setup>>=
+<<ccs.setup, echo=F, message=F>>=
 library(igraph)
 library(osmapiR)
 library(ggmap)
@@ -38,8 +38,7 @@ V(venice.graph.undirected)$eigen <- unname(eigen_centrality(venice.graph.undirec
 venice.city.nodes.df <- data.frame( node = V(venice.graph.undirected)$id,
                                     betweenness = V(venice.graph.undirected)$betweenness,
                                     closeness = V(venice.graph.undirected)$closeness,
-                                    eigen = V(venice.graph.undirected)$eigen,
-                                    DNSLbetweenness = V(venice.graph.undirected)$DNSLbetweenness)
+                                    eigen = V(venice.graph.undirected)$eigen)
 
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$betweenness),]
 
