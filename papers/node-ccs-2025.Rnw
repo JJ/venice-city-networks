@@ -22,6 +22,44 @@ Uri Hershberg,\textsuperscript{2}
 2. University of Haifa, Israel\\
 }
 
+<<ccs.setup>>=
+library(igraph)
+library(osmapiR)
+library(ggmap)
+library(OpenStreetMap)
+library(dupNodes)
+
+venice.graph.undirected <- readRDS("../code/data/venice.graph.undirected.rds")
+
+V(venice.graph.undirected)$betweenness <- betweenness(venice.graph.undirected)
+V(venice.graph.undirected)$closeness <- closeness(venice.graph.undirected)
+V(venice.graph.undirected)$eigen <- unname(eigen_centrality(venice.graph.undirected)$vector)
+
+venice.city.nodes.df <- data.frame( node = V(venice.graph.undirected)$id,
+                                    betweenness = V(venice.graph.undirected)$betweenness,
+                                    closeness = V(venice.graph.undirected)$closeness,
+                                    eigen = V(venice.graph.undirected)$eigen,
+                                    DNSLbetweenness = V(venice.graph.undirected)$DNSLbetweenness)
+
+venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$betweenness),]
+
+top.25.nodes.betweenness <- venice.city.nodes.ranked.df[1:25,]
+
+top.25.nodes.betweenness.latlon.df <- data.frame(node = top.25.nodes.betweenness$node,
+                                                 lat = numeric(nrow(top.25.nodes.betweenness)),
+                                                 lon = numeric(nrow(top.25.nodes.betweenness)))
+for (i in 1:nrow(top.25.nodes.betweenness.latlon.df)){
+  node.info <- osm_get_objects("node",top.25.nodes.betweenness.latlon.df[i,]$node)
+  top.25.nodes.betweenness.latlon.df[i,]$lat <- as.numeric(node.info$lat)
+  top.25.nodes.betweenness.latlon.df[i,]$lon <- as.numeric(node.info$lon)
+}
+
+top.25.nodes.betweenness.with.latlon <- merge(top.25.nodes.betweenness, top.25.nodes.betweenness.latlon.df, by="node")
+
+number.of.nodes <- length(V(venice.graph.undirected)$id)
+number.of.edges <- length(E(venice.graph.undirected)$name)
+@
+
 % ABSTRACT
 % This is a short summary of the research that should take no more than a page [1].
 
@@ -30,6 +68,8 @@ The complex network formed by the streets in the city of Venice are a unique exa
 The creation of space within the city of Venice corresponded to a main constraint: the presence in {\em campi} (squares) of water-gathering cisterns that guaranteed the supply of fresh water to a parish, whose titular church was usually in the same space \cite{psarra2014venice}. These {\em campi} were essential in the interaction between neighbors, cutting across class lines. The city was (and is) hierarchically divided in six {\em sestieri}, and these divided in parishes. However, beyond these divisions, there is no specific {\em city center}, other than the fact that {\em Piazza San Marco} acted as political and religious center and Rialto as the commercial one.
 
 This is why looking at the main nodes in the network is thus interesting for a couple of reasons: first, finding out where they are and if they match the perception we have of the city in a city designed to be perceived in a certain way \cite{psarra_venice_nodate}, and second, if they can be explained by the history of the Republic of Venice and its self-perception.
+
+In order to perform this analysis, we have extracted the street network of Venice from OpenStreetMap using the {\sf osmnx} Python library. This creates a graph that has as nodes every junction between two paths, and as nodes foot-traversable segments; we have excluded the waterways in this analysis. This results in a network with \Sexpr{number.of.nodes} nodes and \Sexpr{number.of.edges} edges.
 
 \bigskip
 {\small
