@@ -77,7 +77,9 @@ top.25.nodes.closeness.with.latlon <- merge(top.25.nodes.closeness, top.25.nodes
 % ABSTRACT
 % This is a short summary of the research that should take no more than a page [1].
 
-The complex network formed by the streets in the city of Venice are a unique example of an adaptive system that can be observed and examined as a solution to the problem of moving goods and services in a city that can be traversed mainly of foot, and where vehicles are confined to specific channels, the {\em rii} and {\em canali}. And this solution has emerged through centuries without a central design, in a true self-organizing way, and in a very unique fashion: while most networks grow by addition of nodes and corresponding edges, Venice has grown mainly through the incorporation of new edges, with new nodes emerging only as the junction between two edges.
+The complex network of Venetian streets is a unique example of an adaptive system that can be observed and examined as a solution to the problem of moving goods and services in a city that can be traversed mainly on foot;
+%, and where vehicles are confined to specific channels, the {\em rii} and {\em canali}.
+a solution emerged through centuries in a truly self-organizing way and in a unique fashion: while most networks grow by addition of nodes and corresponding edges, Venice has grown mainly through the incorporation of new edges, bridges or passages.
 
 The creation of space within the city of Venice corresponded to a main constraint: the presence in {\em campi} (squares) of water-gathering cisterns that guaranteed the supply of fresh water to a parish, whose titular church was usually in the same space \cite{psarra2014venice}. These {\em campi} were essential in the interaction between neighbors, cutting across class lines. The city was (and is) hierarchically divided in six {\em sestieri}, and these divided in parishes. However, beyond these divisions, there is no specific {\em city center}, other than the fact that {\em Piazza San Marco} acted as political and religious center and Rialto as the commercial one.
 
@@ -92,7 +94,7 @@ It is interesting to look at history and see how the two areas of high betweenne
 
 % The high betweenes area leading to the Academia bridge could reflect a militairy need of the Austrians in the 19th century, who built the Academia bridge and whose central headquarters were at San Stephano with the bridge's present role in helping the many students who inhabit Drosudoro and San Polo connect to the rest of Venice. At the other end of Venice the second cluster of high betweeness connects the fare ends of Casteloo near the giardinin and st Helena to all of Venice. Once more this high betweeness score reflects the past millitary importnce of the Arsenale to the Venetian republic's might, which mandated that the whole area be isolated by canals and lagoon from  the rest of Venice. At the same time in the present days this area has been converted into the main resedential area of Venetains.Thus creating a high betweeness cluster where this area is conencted to the rest of Venice.
 The high-closeness area, however, is mainly retail trade, even nowadays. The conclusion is that an analysis of the network may allow us to know the city better, but also how it adapted itself to new requirements along its long and varied history.
-\bigskip
+
 {\small
 \bibliographystyle{unsrt}
 \bibliography{VeniceRef}
