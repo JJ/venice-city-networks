@@ -100,7 +100,7 @@ The high-closeness area, however, is mainly retail trade, even nowadays. The con
 \bibliography{VeniceRef}
 }
 
-<<ccs.node.figure, echo=F, message=F, fig.show="hold", out.width="80%", fig.cap="Top 25 nodes by betweenness centrality in Venice, top, by closeness, bottom.">>=
+<<ccs.node.figure, echo=F, message=F, fig.pos="h!t", fig.align='center', out.width=c("90%","50%"), fig.show="hold", fig.cap="Top 25 nodes by betweenness centrality (top) and closeness centrality (bottom) in Venice">>=
 min.lat <- 45.42
 max.lat <- 45.45
 
@@ -110,7 +110,7 @@ max.lon <- 12.3
 venice <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 15, 'osm')
 basemap <- autoplot( OpenStreetMap::openproj(venice))
 
-betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=3)
+betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=2)
 
 betweenness.map
 
