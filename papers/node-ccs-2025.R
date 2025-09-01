@@ -16,7 +16,7 @@ venice.city.nodes.df <- data.frame( node = V(venice.graph.undirected)$id,
 
 venice.city.nodes.ranked.df <- venice.city.nodes.df[order(-venice.city.nodes.df$betweenness),]
 
-top.25.nodes.betweenness <- venice.city.nodes.ranked.df[1:25,]
+top.25.nodes.betweenness <- venice.city.nodes.ranked.df[1:30,]
 
 top.25.nodes.betweenness.latlon.df <- data.frame(node = top.25.nodes.betweenness$node,
                                                  lat = numeric(nrow(top.25.nodes.betweenness)),
