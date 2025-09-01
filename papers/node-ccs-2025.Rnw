@@ -99,7 +99,7 @@ The high-closeness area, however, is mainly retail trade, even nowadays. The con
 \bibliography{VeniceRef}
 }
 
-<<ccs.node.figure, echo=F, message=F, cache=T, fig.pos="h!t", fig.align='center', out.width=c("90%","50%"), fig.show="hold", fig.cap="Top 25 nodes by betweenness centrality (top) and closeness centrality (bottom) in Venice">>=
+<<ccs.node.figure, echo=F, message=F, fig.pos="h!t", fig.align='center', out.width=c("90%","50%"), fig.show="hold", fig.cap="Top 25 nodes by betweenness centrality (top) and closeness centrality (bottom) in Venice">>=
 min.lat <- 45.42
 max.lat <- 45.45
 
