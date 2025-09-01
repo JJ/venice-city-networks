@@ -58,7 +58,7 @@ max.lon <- 12.3
 venice <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 15, 'osm')
 basemap <- autoplot( OpenStreetMap::openproj(venice))
 
-betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat), color="red", size=2)
+betweenness.map <- basemap + geom_point(data=top.25.nodes.betweenness.with.latlon, aes(x=lon, y=lat,color=betweenness), size=2)
 
 ggsave("ccs-2025-venice-top-betweenness.png", plot = betweenness.map, width = 8, height = 6, dpi = 300)
 
@@ -69,7 +69,7 @@ min.lon <- 12.335
 max.lon <- 12.339
 
 venice.top.closeness <- OpenStreetMap::openmap( c(max.lat, max.lon),c(min.lat, min.lon),zoom = 18, 'osm')
-top.closeness.basemap <- autoplot( OpenStreetMap::openproj(venice.top.closeness))+ geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat), color="blue", size=3)
+top.closeness.basemap <- autoplot( OpenStreetMap::openproj(venice.top.closeness))+ geom_point(data=top.25.nodes.closeness.with.latlon, aes(x=lon, y=lat,color=closeness), size=3)
 
 ggsave("ccs-2025-venice-top-closeness.png", plot = top.closeness.basemap, width = 8, height = 6, dpi = 300)
 
