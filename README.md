@@ -14,6 +14,24 @@ conference. We kindly ask you to quote it if you use the code or data in this
 repository. You can download [the illustrated
 abstract](https://github.com/JJ/venice-city-networks/releases/download/v0.99/node-ccs-2025.pdf).
 
+## Results
+
+We analyze the nodes with the highest betweenness and closeness in the Venice
+city graph. Nodes have been generated from
+[OpenStreetMap](https://openstreetmap.com) data; you can check the code in the
+[`code`](code/) directory.
+
+These red dots represent the points with the highest betweenness
+
+![Points with the highest
+betweenness](papers/ccs-2025-venice-top-betweenness-cropped.png)
+
+And, in this case, highes closeness
+
+![Points with the highest closeness](papers/ccs-2025-venice-top-closeness-cropped.png)
+
+Please check the ['node-ccs-2025.R'](papers/node-ccs-2025.R) file for how these
+have been generated.
 
 ## LICENSE
 
