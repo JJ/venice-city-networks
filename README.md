@@ -11,7 +11,8 @@ complex nature of the urban fabric in Venice", by JJ Merelo and Uri
 Hershberg, accepted at the
 [CCS'25](https://drive.google.com/file/d/1UZIGmly5LwZ4NkMNXorQzxgfwiGR4ATh/view)
 conference. We kindly ask you to quote it if you use the code or data in this
-repository.
+repository. You can download [the illustrated
+abstract](https://github.com/JJ/venice-city-networks/releases/download/v0.99/node-ccs-2025.pdf).
 
 
 ## LICENSE
