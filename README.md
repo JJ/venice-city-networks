@@ -33,6 +33,12 @@ And, in this case, highes closeness
 Please check the ['node-ccs-2025.R'](papers/node-ccs-2025.R) file for how these
 have been generated.
 
+!["Manta ray" with nodes and edges](manta-ray-with-nodes.png)
+
+In this case, we represent a MDS projection of the graph with the nodes above
+represented on the chart, so that we can have an idea of the role they play in
+the city graph.
+
 ## LICENSE
 
 (c) 2024-2025 by JJ Merelo and Uri Hershberg. Released under the [Affero GPL
